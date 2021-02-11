@@ -18,17 +18,8 @@ Resources:
         EnvironmentName: container-devsecops-wksp
       TemplateURL: !Join [ '/', [ 'https://s3.amazonaws.com', !Ref BucketName, 'devsecops/containers/anchore-vpc.yml'  ] ]
 
-  AnchoreStack:
-    DependsOn: AnchoreVpcStack
-    Type: AWS::CloudFormation::Stack
-    Properties:
-      Parameters:
-        ResourceName: container-devsecops-wksp
-        BucketName: !Ref BucketName
-      TemplateURL: !Join [ '/', [ 'https://s3.amazonaws.com', !Ref BucketName, 'devsecops/containers/anchore-fargate.yml'  ] ]
-
   InitialPipeline:
-    DependsOn: AnchoreStack
+    DependsOn: AnchoreVpcStack
     Type: AWS::CloudFormation::Stack
     Properties:
       Parameters:
