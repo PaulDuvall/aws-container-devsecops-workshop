@@ -886,8 +886,7 @@ Resources:
                 Action:
                   - lambda:InvokeFunction
                   - lambda:InvokeAsync
-                Resource: !ImportValue 'AnchoreFargateStack:SendFindingsToSecurityHub'
-              -
+                Resource: '*'              -
                 Effect: Allow
                 Action:
                   - s3:PutObject
